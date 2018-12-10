@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RankUpWebPage.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,18 @@ namespace RankUpWebPage.Controllers
 {
     public class JobAdController : Controller
     {
+
+        JobRepository jobRepository = new JobRepository();
         // GET: JobAd
         public ActionResult Index()
         {
+            return View();
+        }
 
+        [HttpGet]
+        public ActionResult AddJob()
+        {
+            jobRepository.AddJob("title", "jobDescription", "salary", "workingHours", "jobDate");
             return View();
         }
 
