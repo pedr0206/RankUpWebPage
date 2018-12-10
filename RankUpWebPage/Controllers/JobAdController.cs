@@ -11,6 +11,7 @@ namespace RankUpWebPage.Controllers
         // GET: JobAd
         public ActionResult Index()
         {
+
             return View();
         }
 
