@@ -12,9 +12,9 @@ namespace RankUpWebPage.Data
         Job job;
         private string message = "You have Creatded a Job advertisement";
 
-        public string AddJob(string title, string jobDescription, string salary, string workingHours, string jobDate)
+        public string AddJob(string title, string jobDescription, float salary, double workingHours, DateTime jobDate)
         {
-            JobList.Add(new Job(title, jobDescription, float.Parse(salary), double.Parse(workingHours), DateTime.Parse(jobDate)));
+            JobList.Add(new Job(title, jobDescription, salary, workingHours, jobDate));
             return message;
         }
     }

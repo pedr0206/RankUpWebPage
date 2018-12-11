@@ -1,4 +1,5 @@
 ﻿using RankUpWebPage.Data;
+using RankUpWebPage.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,28 @@ namespace RankUpWebPage.Controllers
 {
     public class JobAdController : Controller
     {
-
+        
         JobRepository jobRepository = new JobRepository();
         // GET: JobAd
         public ActionResult Index()
         {
+            
             return View();
         }
-
-        [HttpGet]
-        public ActionResult AddJob()
+        //[HttpGet]
+        //public ActionResult CreateJob()
+        //{
+            
+        //    return View();
+        //}
+        //[HttpPost]
+        public ActionResult CreateJob(string title, string jobDescription, float salary, double workingHours, DateTime jobDate)
         {
-            jobRepository.AddJob("title", "jobDescription", "salary", "workingHours", "jobDate");
+            if (ModelState.IsValid)
+            {
+                jobRepository.AddJob(title, jobDescription, salary, workingHours, jobDate);
+                
+            }
             return View();
         }
 
