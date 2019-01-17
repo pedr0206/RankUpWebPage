@@ -10,14 +10,15 @@ namespace RankUpCore.Controllers
 {
     public class JobAdController : Controller
     {
-
-        JobRepository jobRepository = new JobRepository();
+        JobRepository jobRepository = JobRepository.Instance;
+        
         // GET: JobAd
         [HttpGet]
         public ActionResult Index()
+
         {
-            Job jobmodel = new Job();
-            return View(jobmodel);
+            Job job = new Job();
+            return View(job);
         }
 
         [HttpPost]
@@ -25,16 +26,17 @@ namespace RankUpCore.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 jobRepository.AddJob(job);
 
             }
             return RedirectToAction("AllJobs");
         }
-
+        [HttpGet]
         // GET: JobAd/Details/5
         public ActionResult AllJobs()
         {
-
+            
             return View(jobRepository.GetAll());
         }
 
