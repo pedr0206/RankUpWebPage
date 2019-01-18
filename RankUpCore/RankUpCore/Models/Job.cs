@@ -8,7 +8,7 @@ namespace RankUpCore.Models
 {
     public class Job
     {
-        [Required]
+        [Required]//data annotation 
         public string Title { get; set; }
         [Required]
         public string JobDescription { get; set; }
@@ -20,25 +20,13 @@ namespace RankUpCore.Models
         public DateTime JobDate { get; set; }
 
 
-        List<Skill> skills;
-        List<string> attatchments;
-        List<User> applicants;
-        int[] skillsExp;
+        
+        //List<string> attatchments;
+        //List<User> applicants;
+        //List<Skill> skills;
+        //int[] skillsExp;
 
-        //public Job(string title, string jobDescription, float salary, double workingHours, DateTime jobDate /*, List<Skill> skills, List<string> attatchments, int[] skillsExp*/)
-        //{
-        //    Title = title;
-        //    JobDescription = jobDescription;
-        //    Salary = salary;
-        //    WorkingHours = workingHours;
-        //    JobDate = jobDate;
-        //    //this.skills = skills;
-        //    //this.attatchments = attatchments;
-        //    //this.skillsExp = skillsExp;
-        //}
 
-        public Job()
-        {
-        }
+
     }
 }
