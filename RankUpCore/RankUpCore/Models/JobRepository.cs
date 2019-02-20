@@ -8,11 +8,8 @@ namespace RankUpCore.Models
     public class JobRepository
     {
         private static JobRepository instance = null;
-        private static readonly object mylock = new object();
         static List<Job> JobList = new List<Job>();
-        
-        private string message = "You have Creatded a Job advertisement";
-        object ourLock = new object();
+        private static readonly object ourLock = new object();
 
         JobRepository()
         {
@@ -22,7 +19,7 @@ namespace RankUpCore.Models
         {
             get
             {
-                lock (mylock)
+                lock (ourLock)
                 {
                     if (instance == null)
                     {
@@ -34,18 +31,21 @@ namespace RankUpCore.Models
                 }
             }
         }
-      
         public void AddJob(Job job1)
         {
 
             Job job = new Job() { Title = job1.Title, JobDescription = job1.JobDescription, Salary = job1.Salary, WorkingHours = job1.WorkingHours, JobDate = job1.JobDate };
-            JobList.Add(job);
+
+            lock (ourLock)
+            {
+                JobList.Add(job);
+            }
         }
         public List<Job> GetAll()
         {
             lock (ourLock)
             {
-                return JobList/*.ToList()*/;
+                return JobList.ToList();
             }
 
         }
